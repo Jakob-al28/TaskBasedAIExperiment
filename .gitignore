@@ -1,4 +1,4 @@
-experiment-server/node_modules
-experiment-server/package-lock.json
+node_modules
+package-lock.json
 .env
 data/
