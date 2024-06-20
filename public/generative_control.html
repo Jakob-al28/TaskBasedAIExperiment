@@ -41,7 +41,7 @@
     function applyLanguage(lang) {
         const langData = translations[lang];
         // Update the title of the page
-        document.querySelector('.task-gen h2').textContent = langData.header;
+        document.querySelector('.task-gen h2').textContent = langData.header_gen;
 
         // Update paragraphs in the task-gen container
         const paragraphs = document.querySelectorAll('.task-gen p');

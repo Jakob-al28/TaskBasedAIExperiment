@@ -13,7 +13,7 @@ const translations = {
       changeLanguage: "Sprache ändern:",
       
       // generative
-      header: "Research Paper Topic Generation Task",
+      header_gen: "Research Paper Topic Generation Task",
       description: "You are a student at the University of Paderborn and you need to come up with topics for research papers.",
       task: "Think of three research topics in Business Law that could be explored. If you are not familiar with Business Law, you may select topics from Business Studies instead. However, topics specifically related to Business Law are preferred.",
       evaluationCriteria: "Your results will be evaluated based on originality, speed, and relevance.",
@@ -97,7 +97,7 @@ const translations = {
         aiProductivityLabel: "I believe that generative AI tools like ChatGPT enhance my productivity.",
         attentionCheckLabel: "Attention check, please select the 'strongly disagree' button with the value 1.",
         aiReuseLabel: "I frequently use generative AI tools like ChatGPT in my daily life.",
-        aiSentimentLabel: "Optional field: Express your opinion in less than 50 words and preferably in bullet points on the statement 'Generative AI tools like ChatGPT increase my productivity'.",
+        aiSentimentLabel: "Express your opinion in less than 50 words and preferably in bullet points on the statement 'Generative AI tools like ChatGPT increase my productivity'.",
         aiSentimentPlaceholder: "Use this field to enter your opinion.",
         submitButton: "SUBMIT SURVEY",
     },
@@ -121,7 +121,7 @@ const translations = {
       changeLanguage: "Change Language:",
 
       // generative
-      header: "Aufgabe zur Generierung von Forschungsthemen",
+      header_gen: "Aufgabe zur Generierung von Forschungsthemen",
       description: "Sie sind Student an der Universität Paderborn und müssen Themen für Forschungsarbeiten entwickeln.",
       task: "Denken Sie an drei Forschungsthemen im Bereich Wirtschaftsrecht, die untersucht werden könnten. Wenn Sie mit Wirtschaftsrecht nicht vertraut sind, können Sie auch Themen aus den Wirtschaftswissenschaften wählen. Bevorzugt werden jedoch Themen, die speziell mit dem Wirtschaftsrecht zusammenhängen.",
       evaluationCriteria: "Ihre Ergebnisse werden anhand von Originalität, Geschwindigkeit und Relevanz bewertet.",
@@ -205,7 +205,7 @@ const translations = {
         aiProductivityLabel: "Ich glaube, dass generative KI-Tools wie ChatGPT meine Produktivität steigern.",
         attentionCheckLabel: "Aufmerksamkeitsprüfung, bitte wählen Sie den Knopf 'stimme überhaupt nicht zu' mit dem Wert 1.",
         aiReuseLabel: "Ich nutze häufig generative KI-Tools wie ChatGPT in meinem Alltag.",
-        aiSentimentLabel: "Freiwilliges Feld: Äußern Sie Ihre Meinung in maximal 50 Wörtern und in Stichpunkten zu der Aussage 'KI-Tools wie ChatGPT steigern meine Produktivität'.",
+        aiSentimentLabel: "Äußern Sie Ihre Meinung in maximal 50 Wörtern und in Stichpunkten zu der Aussage 'KI-Tools wie ChatGPT steigern meine Produktivität'.",
         aiSentimentPlaceholder: "Nutzen Sie dieses Feld, um Ihre Meinung einzugeben.",
         submitButton: "UMFRAGE EINREICHEN", 
 
