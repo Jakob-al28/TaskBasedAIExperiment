@@ -1,1 +1,4 @@
 experiment-server/node_modules
+experiment-server/package-lock.json
+.env
+data/
