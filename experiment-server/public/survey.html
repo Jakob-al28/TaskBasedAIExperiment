@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Survey Page</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/languageData.js"></script>
+    <style>
+        body {
+            padding-top: 100px; 
+            padding-bottom: 100px;
+
+        }
+
+        .scale {
+            display: flex;
+            justify-content: space-between;
+            max-width: 300px;
+            margin-bottom: 20px;
+    }
+        .scale input {
+            display: none;
+        }
+        .scale label {
+            display: block;
+            width: 50px;
+            padding: 10px;
+            text-align: center;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        .scale input:checked + label {
+            background-color: #007bff;
+            color: white;
+        }
+
+    </style>
+</head>
+<body class="survey-body">
+    <div class="survey-container">
+        <h2>Survey</h2>
+        <p>Thank you for submitting your answer. Please fill out this short survey.</p>
+        <form id="survey-form">
+            <h3>Personal Questions</h3>
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required min="0">
+            <br><br>
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="" disabled selected>Please choose</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+                <option value="prefer-not-to-say">Prefer not to say</option>
+            </select>
+            <br><br>
+            <label for="occupation">Occupation:</label>
+            <input type="text" id="occupation" name="occupation" required>
+            <br><br>
+            <label for="location">Location (City/Country):</label>
+            <input type="text" id="location" name="location" required>
+            <br><br>
+
+            <label for="education">Education:</label>
+            <select id="education" name="education" required>
+                <option value="" disabled selected>Please choose</option>
+                <option value="no_education">No formal education</option>
+                <option value="primary_education">Primary education</option>
+                <option value="secondary_education">Secondary education</option>
+                <option value="vocational_training">Vocational training</option>
+                <option value="bachelor_degree">Bachelor's degree</option>
+                <option value="master_degree">Master's degree</option>
+                <option value="doctorate_degree">Doctorate degree</option>
+                <option value="professor">Professor</option>
+            </select><br><br>
+
+            <h3>Experience with the Task</h3>
+            <p>The scale ranges from 1 to 5, where 1 means strongly disagree and 5 means strongly agree.</p>
+            <label for="time-management">I found the time allotted for the task sufficient.</label>
+            <div class="scale">
+                <input type="radio" id="time-management-1" name="time-management" value="1" required>
+                <label for="time-management-1">1</label>
+                <input type="radio" id="time-management-2" name="time-management" value="2" required>
+                <label for="time-management-2">2</label>
+                <input type="radio" id="time-management-3" name="time-management" value="3" required>
+                <label for="time-management-3">3</label>
+                <input type="radio" id="time-management-4" name="time-management" value="4" required>
+                <label for="time-management-4">4</label>
+                <input type="radio" id="time-management-5" name="time-management" value="5" required>
+                <label for="time-management-5">5</label>
+            </div>
+
+            <label for="task-understanding">I found the instructions for the task very clear.</label>
+            <div class="scale">
+                <input type="radio" id="task-understanding-1" name="task-understanding" value="1" required>
+                <label for="task-understanding-1">1</label>
+                <input type="radio" id="task-understanding-2" name="task-understanding" value="2" required>
+                <label for="task-understanding-2">2</label>
+                <input type="radio" id="task-understanding-3" name="task-understanding" value="3" required>
+                <label for="task-understanding-3">3</label>
+                <input type="radio" id="task-understanding-4" name="task-understanding" value="4" required>
+                <label for="task-understanding-4">4</label>
+                <input type="radio" id="task-understanding-5" name="task-understanding" value="5" required>
+                <label for="task-understanding-5">5</label>
+            </div>
+
+            <label for="difficulty-level">I found the task to be very difficult.</label>
+            <div class="scale">
+                <input type="radio" id="difficulty-level-1" name="difficulty-level" value="1" required>
+                <label for="difficulty-level-1">1</label>
+                <input type="radio" id="difficulty-level-2" name="difficulty-level" value="2" required>
+                <label for="difficulty-level-2">2</label>
+                <input type="radio" id="difficulty-level-3" name="difficulty-level" value="3" required>
+                <label for="difficulty-level-3">3</label>
+                <input type="radio" id="difficulty-level-4" name="difficulty-level" value="4" required>
+                <label for="difficulty-level-4">4</label>
+                <input type="radio" id="difficulty-level-5" name="difficulty-level" value="5" required>
+                <label for="difficulty-level-5">5</label>
+            </div>
+
+            <label for="tools-usage">I found the tools provided to be effective for completing the task.</label>
+            <div class="scale">
+                <input type="radio" id="tools-usage-1" name="tools-usage" value="1" required>
+                <label for="tools-usage-1">1</label>
+                <input type="radio" id="tools-usage-2" name="tools-usage" value="2" required>
+                <label for="tools-usage-2">2</label>
+                <input type="radio" id="tools-usage-3" name="tools-usage" value="3" required>
+                <label for="tools-usage-3">3</label>
+                <input type="radio" id="tools-usage-4" name="tools-usage" value="4" required>
+                <label for="tools-usage-4">4</label>
+                <input type="radio" id="tools-usage-5" name="tools-usage" value="5" required>
+                <label for="tools-usage-5">5</label>
+            </div>
+
+            <label for="ai-productivity">I believe the AI tool improved my productivity.</label>
+            <div class="scale">
+                <input type="radio" id="ai-productivity-1" name="ai-productivity" value="1" required>
+                <label for="ai-productivity-1">1</label>
+                <input type="radio" id="ai-productivity-2" name="ai-productivity" value="2" required>
+                <label for="ai-productivity-2">2</label>
+                <input type="radio" id="ai-productivity-3" name="ai-productivity" value="3" required>
+                <label for="ai-productivity-3">3</label>
+                <input type="radio" id="ai-productivity-4" name="ai-productivity" value="4" required>
+                <label for="ai-productivity-4">4</label>
+                <input type="radio" id="ai-productivity-5" name="ai-productivity" value="5" required>
+                <label for="ai-productivity-5">5</label>
+            </div>
+
+            <label for="attention">Attention check, please select the "strongly disagree" button with the value 1.</label>
+            <div class="scale">
+                <input type="radio" id="attention-1" name="attention" value="1" required>
+                <label for="attention-1">1</label>
+                <input type="radio" id="attention-2" name="attention" value="2" required>
+                <label for="attention-2">2</label>
+                <input type="radio" id="attention-3" name="attention" value="3" required>
+                <label for="attention-3">3</label>
+                <input type="radio" id="attention-4" name="attention" value="4" required>
+                <label for="attention-4">4</label>
+                <input type="radio" id="attention-5" name="attention" value="5" required>
+                <label for="attention-5">5</label>
+            </div>
+
+            <label for="ai-reuse">I would use the AI tool again for similar tasks.</label>
+            <div class="scale">
+                <input type="radio" id="ai-reuse-1" name="ai-reuse" value="1" required>
+                <label for="ai-reuse-1">1</label>
+                <input type="radio" id="ai-reuse-2" name="ai-reuse" value="2" required>
+                <label for="ai-reuse-2">2</label>
+                <input type="radio" id="ai-reuse-3" name="ai-reuse" value="3" required>
+                <label for="ai-reuse-3">3</label>
+                <input type="radio" id="ai-reuse-4" name="ai-reuse" value="4" required>
+                <label for="ai-reuse-4">4</label>
+                <input type="radio" id="ai-reuse-5" name="ai-reuse" value="5" required>
+                <label for="ai-reuse-5">5</label>
+            </div>
+            <div class="notepad">
+                <label id="aiSentimentLabel" for="result">Optional field: Express your opinion in 50 words and preferably in bullet points on the statement 'Generative AI tools like ChatGPT increase my productivity'. </label> <br>
+                <textarea id="aiSentimentPlaceholder" placeholder="Use this field to enter your opinion." oninput="checkWordCount()"></textarea>
+            </div> <br>
+            <button type="submit" class="button-submit">SUBMIT SURVEY</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('survey-form').addEventListener('submit', function(event) {
+        event.preventDefault(); 
+
+        let form = event.target;
+        let valid = true;
+        let errorMessage = '';
+
+        setTimeout(function() {
+        window.location.href = 'thankyou.html';
+        }, 0); 
+        
+    });
+});
+        function checkWordCount() {
+            const textarea = document.getElementById('aiSentimentPlaceholder');
+            const message = document.getElementById('wordCountMessage');
+            const words = textarea.value.match(/\S+/g) || [];
+
+            if (words.length > 50) {
+                alert("Word limit exceeded. Please limit your opinion to 50 words.");
+                textarea.value = words.slice(0, 50).join(' ');
+            } 
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            applyLanguage(localStorage.getItem('language') || 'de');  // Apply language on load based on stored preference or default to German
+        });
+
+        function applyLanguage(lang) {
+            const langData = translations[lang];
+
+            // Update the page title and main survey introduction
+            document.querySelector('h2').textContent = langData.surveyHeader;
+            document.querySelectorAll('.survey-container p')[0].textContent = langData.thankYouMessage;
+
+            // Update sections and questions
+            document.querySelectorAll('h3')[0].textContent = langData.personalQuestionsHeader;
+            document.querySelector('label[for="age"]').textContent = langData.ageLabel;
+            document.querySelector('label[for="gender"]').textContent = langData.genderLabel;
+            document.querySelector('label[for="occupation"]').textContent = langData.occupationLabel;
+            document.querySelector('label[for="location"]').textContent = langData.locationLabel;
+            document.querySelector('label[for="education"]').textContent = langData.educationLabel;
+
+            // Updating select options for gender and education could be more complex due to needing to update individual option texts
+            const genderOptions = document.querySelectorAll('#gender option');
+            genderOptions[0].textContent = langData.genderOptions.choose;
+            genderOptions[1].textContent = langData.genderOptions.male;
+            genderOptions[2].textContent = langData.genderOptions.female;
+            genderOptions[3].textContent = langData.genderOptions.other;
+            genderOptions[4].textContent = langData.genderOptions.preferNotToSay;
+
+            const educationOptions = document.querySelectorAll('#education option');
+            educationOptions[0].textContent = langData.educationOptions.choose;
+            educationOptions[1].textContent = langData.educationOptions.noEducation;
+            educationOptions[2].textContent = langData.educationOptions.primaryEducation;
+            educationOptions[3].textContent = langData.educationOptions.secondaryEducation;
+            educationOptions[4].textContent = langData.educationOptions.vocationalTraining;
+            educationOptions[5].textContent = langData.educationOptions.bachelorDegree;
+            educationOptions[6].textContent = langData.educationOptions.masterDegree;
+            educationOptions[7].textContent = langData.educationOptions.doctorateDegree;
+            educationOptions[8].textContent = langData.educationOptions.professor;
+
+            // Update the Experience with Task section
+            document.querySelectorAll('h3')[1].textContent = langData.experienceHeader;
+            document.querySelectorAll('.survey-container p')[1].textContent = langData.scaleDescription;
+            document.querySelector('label[for="time-management"]').textContent = langData.timeManagementLabel;
+            document.querySelector('label[for="task-understanding"]').textContent = langData.taskUnderstandingLabel;
+            document.querySelector('label[for="difficulty-level"]').textContent = langData.difficultyLevelLabel;
+            document.querySelector('label[for="tools-usage"]').textContent = langData.toolsUsageLabel;
+            document.querySelector('label[for="ai-productivity"]').textContent = langData.aiProductivityLabel;
+            document.querySelector('label[for="attention"]').textContent = langData.attentionCheckLabel;
+            document.querySelector('label[for="ai-reuse"]').textContent = langData.aiReuseLabel;
+
+            document.getElementById('aiSentimentLabel').textContent = langData.aiSentimentLabel;
+            document.getElementById('aiSentimentPlaceholder').placeholder = langData.aiSentimentPlaceholder;
+
+            // Update the submit button text
+            document.querySelector('.button-submit').textContent = langData.submitButton;
+        }
+    </script>
+    <script src="js/survey.js"></script>
+</body>
+</html>

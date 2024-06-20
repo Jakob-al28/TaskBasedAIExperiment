@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Experiment Interface</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/languageData.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="task">
+            <h2>Financial Calculations</h2>
+            <p>As a controller at a big company, you are tasked with making several financial calculations based on the given financial data.</p>
+            <p>Use the tools provided on the right side for this task. Tabbing out is only allowed when you use the tool on the right side. Copying and pasting information into the textbox is allowed. You have 5 minutes to complete this task.</p>
+            <p>Financial Data as of 31.12.2023:</p>
+
+            <table class="balance-sheet">
+                <tr>
+                    <th>Assets</th>
+                    <th>(in million €)</th>
+                    <th>Liabilities</th>
+                    <th>(in million €)</th>
+                </tr>
+                <tr>
+                    <td>Tangible Assets</td>
+                    <td>4,100</td>
+                    <td>Subscribed Capital</td>
+                    <td>600</td>
+                </tr>
+                <tr>
+                    <td>Financial Assets</td>
+                    <td>1,500</td>
+                    <td>Capital Reserves</td>
+                    <td>420</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Retained Earnings</td>
+                    <td>180</td>
+                </tr>
+                <tr>
+                    <td>Current Assets</td>
+                    <td>400</td>
+                    <td>Net Profit</td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Provisions</td>
+                    <td>500</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>Liabilities</td>
+                    <td>4,200</td>
+                </tr>
+                <tr>
+                    <td><strong id="total1">Total</strong></td>
+                    <td><strong>6,000</strong></td>
+                    <td><strong id="total2">Total</strong></td>
+                    <td><strong>6,000</strong></td>
+                </tr>
+            </table>
+            <p>Number of old shares = 60 million<br>
+             Number of new shares = 20 million<br>
+             Price of old share = 50 €<br>
+             Price of new share = 40 €</p>
+            <p>Since the company aims to increase their capital, shareholders will be influenced by this change. Your task is to calculate the "subscription right" (Bezugsrecht).</p>
+            <div class="notepad">
+                <textarea type="text" id="notepad" placeholder="Use this field to keep track of found information."></textarea>
+            </div>
+            <div class="input-group">
+                <label for="subscription-right">Subscription right:</label>
+                <input type="text" id="subscription-right" oninput="checkInputs()" placeholder="Enter the final subscription right value here">
+            </div>
+            <button class="button-submit" id="submitButton" type="submit" onclick="submitChoice()" disabled>Submit</button>
+            <div id="timer" class="timer"></div>
+        </div>
+        <div class="container-right">
+            <div class="search" id="search-bar-container">
+                <div class="search-header">
+                    <input type="text" id="search-input-2" placeholder="This is a search engine for you to use...">
+                    <button id="submit-btn" onclick="submitQuery2()">SUBMIT</button>
+                </div> <br>
+                <div id="queries-left-2">Queries left for this task: 10</div> <br>
+                <div class="results" id="results-2">
+                </div>
+                <h3>Calculator</h3>
+                <div class="search-header">
+                    <input type="text" id="calculator-input" placeholder="Enter expression (e.g., 2+2*3/4-5)">
+                    <button class="button-submit" onclick="calculate()">Calculate</button>
+                </div><br>
+                <div class="input-group">
+                    <label for="result">Result:</label>
+                    <input type="text" id="result" placeholder="Result will appear here" readonly>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/script_retrieval.js"></script>
+    <script src="js/retrieval_control.js"></script>
+    <script>         
+    document.addEventListener('DOMContentLoaded', function() {
+        let lang = localStorage.getItem('language') || 'de';
+        applyLanguage(lang);
+    });
+    
+    function applyLanguage(lang) {
+        const langData = translations[lang];
+        // Update heading
+        document.querySelector('.task h2').textContent = langData.header;
+
+        // Update paragraphs in the task container
+        const paragraphs = document.querySelectorAll('.task p');
+        paragraphs[0].textContent = langData.description1;
+        paragraphs[1].textContent = langData.description2;
+        paragraphs[2].textContent = langData.financialDataDate;
+
+        // Update table headers and data dynamically
+        const ths = document.querySelectorAll('.balance-sheet th');
+        ths[0].textContent = langData.assets;
+        ths[1].textContent = langData.inMillion;
+        ths[2].textContent = langData.liabilities;
+        ths[3].textContent = langData.inMillion;
+
+        // Update table rows with dynamic data - assuming table structure is known and consistent
+        const tds = document.querySelectorAll('.balance-sheet td');
+        tds[0].textContent = langData.tangibleAssets;
+        tds[2].textContent = langData.subscribedCapital;
+        tds[4].textContent = langData.financialAssets;
+        tds[6].textContent = langData.capitalReserves;
+        tds[10].textContent = langData.retainedEarnings;
+        tds[12].textContent = langData.currentAssets;
+        tds[14].textContent = langData.netProfit;
+        tds[18].textContent = langData.provisions;
+        tds[22].textContent = langData.liabilities;
+
+        // Update non-table paragraphs
+        paragraphs[3].innerHTML = langData.shareInfo;
+        paragraphs[4].textContent = langData.taskSubscriptionRight;
+
+        // Update placeholders and labels in forms and input fields
+        document.getElementById('notepad').placeholder = langData.placeholderNotepad;
+        document.querySelector('label[for="subscription-right"]').textContent = langData.labelSubscriptionRight;
+        document.getElementById('subscription-right').placeholder = langData.placeholderSubscriptionRight;
+        document.getElementById('submitButton').textContent = langData.submitButton;
+        document.getElementById('timer').textContent = langData.timer;
+
+        // Update search and calculation tools
+        document.getElementById('search-input-2').placeholder = langData.searchPlaceholder;
+        document.getElementById('submit-btn').textContent = langData.submitSearch;
+        document.getElementById('queries-left-2').textContent = langData.queriesLeft;
+        document.getElementById('calculator-input').placeholder = langData.calculatorPlaceholder;
+        document.querySelector('button.button-submit[onclick="calculate()"]').textContent = langData.calculateButton;
+        document.querySelector('label[for="result"]').textContent = langData.labelResult;
+        document.getElementById('result').placeholder = langData.placeholderResult;
+        document.querySelector('.search h3').textContent = langData.calculator;
+        document.getElementById('total1').textContent = langData.total;
+        document.getElementById('total2').textContent = langData.total;
+    }
+    </script>
+</body>
+</html>

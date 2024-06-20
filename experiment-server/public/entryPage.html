@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Entry Page</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/languageData.js"></script>
+</head>
+<body class="entry-body">
+    <div class="entry-container">
+        <h2>Welcome to our Experiment</h2>
+        <p>Thank you for your interest. Please read the following information before proceeding.</p>
+        
+        <p>This experiment aims to study the effectiveness of Large Language Models on knowledge worker productivity.</p>
+        
+        <h3>Instructions</h3>
+        <p>You will be required to complete a series of tasks. Please follow the instructions carefully and use only the resources provided within the interface. Make sure you stay on this tab for the full experiment to verify that you have adhered to the guidelines.</p>
+        
+        <h3>Consent</h3>
+        <p>By proceeding, you consent to participate in this study. Your data will be used for research purposes only and will be kept confidential. For the purpose of ensuring that each participant attends this experiment only once, a cookie related to this experiment will be stored for 90 days.</p>
+        
+        <label>
+            <input type="checkbox" id="consent-checkbox"> <span id="consent-label"> I agree to participate in this study. </span>
+        </label>
+        
+        <br><br>
+        <button id="start-experiment-btn" class="button-submit" disabled>Start Experiment</button>
+        <div class="language-selector">
+            <label for="languageSelect">Change Language:</label>
+            <select id="languageSelect">
+              <option value="de">Deutsch</option>
+              <option value="en">English</option>
+            </select>
+        </div>        
+    </div>
+    <script>
+        document.getElementById('consent-checkbox').addEventListener('change', function() {
+            document.getElementById('start-experiment-btn').disabled = !this.checked;
+        });
+
+        document.getElementById('start-experiment-btn').addEventListener('click', function() {
+            var pages = [
+                'generative_control.html',
+                'generative_experimental.html', 
+                'retrieval_control.html',
+                'retrieval_experimental.html'
+            ];
+            // Check if a page was already assigned and stored in local storage
+            var randomPage = localStorage.getItem('randomPage');
+            if (!randomPage) {
+                var randomPage = pages[Math.floor(Math.random() * pages.length)];
+                localStorage.setItem('randomPage', randomPage);
+            }
+            window.location.href = randomPage;
+        });
+        
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                const checkbox = document.getElementById('consent-checkbox');
+                if (document.activeElement === checkbox) {
+                    checkbox.checked = !checkbox.checked;
+                    checkbox.dispatchEvent(new Event('change')); 
+                }
+            }
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            applyLanguage(localStorage.getItem('language') || 'de');  // Apply language on load based on stored preference or default to German
+        });
+
+        function applyLanguage(lang) {
+            const langData = translations[lang];
+            document.querySelector('.entry-container h2').textContent = langData.welcome;
+            document.querySelectorAll('.entry-container p')[0].textContent = langData.thankYou;
+            document.querySelectorAll('.entry-container p')[1].textContent = langData.studyAim;
+            document.querySelectorAll('.entry-container h3')[0].textContent = langData.Instructions;
+            document.querySelectorAll('.entry-container p')[2].textContent = langData.instructions;
+            document.querySelectorAll('.entry-container h3')[1].textContent = langData.Consent;
+            document.querySelectorAll('.entry-container p')[3].textContent = langData.consent;
+            document.getElementById('consent-label').textContent = langData.agree;
+            document.getElementById('start-experiment-btn').textContent = langData.startButton;
+            document.querySelector('.language-selector label').textContent = langData.changeLanguage;
+        }
+
+
+        document.getElementById('languageSelect').onchange = function() {
+            localStorage.setItem('language', this.value);
+            applyLanguage(this.value);  // Apply language without reloading the page
+        };
+    </script>
+</body>
+</html>
