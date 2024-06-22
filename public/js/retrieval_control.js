@@ -10,12 +10,41 @@ let tabOutCount = 0;
 let textBoxInputs = new Map();
 let startTime = Date.now();
 var page = 1;
+let inactivityTime = 0;
+let inactivityInterval = null;
+const inactivityLimit = 1.5 * 60 * 1000; // 90 Sekunden Inaktivitätsgrenze
+var inactiveUser = false;
+
+function resetInactivityTimer() {
+    if (inactivityInterval) {
+        clearInterval(inactivityInterval);
+    }
+    inactivityTime = 0;
+    inactivityInterval = setInterval(function() {
+        inactivityTime += 1000; 
+        if (inactivityTime >= inactivityLimit) {
+            inactiveUser = true;
+            clearInterval(inactivityInterval);
+        }
+    }, 1000);
+}   
+
+// Event Listener für verschiedene Interaktionen
+window.onload = resetInactivityTimer;
+document.onmousemove = resetInactivityTimer;
+document.addEventListener('keydown', resetInactivityTimer);
+document.onscroll = resetInactivityTimer;
+document.onclick = resetInactivityTimer;
 
 // Track tab out events
 document.addEventListener('visibilitychange', function() {
     if (document.hidden) {
         tabOutCount++;
     }
+});
+
+window.addEventListener('blur', function() {
+    tabOutCount++;
 });
 
 // Track text box inputs
@@ -47,7 +76,8 @@ function saveInteractionData() {
             tabbedOutCount: tabOutCount,
             queryCount: queryCount,
             textBoxInputs: Array.from(textBoxInputs.entries()),
-            searchQueries: searchQueries // searchQueries is defined in script_retrieval.js
+            searchQueries: searchQueries, // searchQueries is defined in script_retrieval.js
+            inactiveUser: inactiveUser
         }]
     };
 

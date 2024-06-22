@@ -293,8 +293,7 @@ function displayTime() {
     const seconds = timeRemaining % 60;
     document.getElementById('timer').textContent = `${langData.time} ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }
-
-window.onload = startTimer;
+window.addEventListener('load', startTimer);
 
 function handleKeyPress(event) {
     if (event.key === 'Enter') {
@@ -333,7 +332,6 @@ document.getElementById('calculator-input').addEventListener('keypress', functio
 
 function calculate() {
     const input = document.getElementById('calculator-input').value;
-    
     try {
         if (/[^0-9+\-*/().\s]/.test(input)) {
             throw new Error("Invalid characters in input.");

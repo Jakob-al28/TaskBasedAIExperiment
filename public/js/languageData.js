@@ -64,7 +64,7 @@ const translations = {
       //survey
       surveyHeader: "Survey",
         thankYouMessage: "Thank you for submitting your answer. Please fill out this short survey.",
-        personalQuestionsHeader: "Personal Questions",
+        personalQuestionsHeader: "Demographic questions",
         ageLabel: "Age:",
         genderLabel: "Gender:",
         genderOptions: {
@@ -172,7 +172,7 @@ const translations = {
       //survey
       surveyHeader: "Umfrage",
         thankYouMessage: "Vielen Dank für Ihre Antwort. Bitte füllen Sie diese kurze Umfrage aus.",
-        personalQuestionsHeader: "Persönliche Fragen",
+        personalQuestionsHeader: "Demographische Fragen",
         ageLabel: "Alter:",
         genderLabel: "Geschlecht:",
         genderOptions: {

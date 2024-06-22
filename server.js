@@ -36,6 +36,7 @@ const pageInteractionSchema = new mongoose.Schema({
     type: Object,
     of: String // Keys are search queries and values are clicked links
   },
+  inactiveUser: Boolean
 }, { timestamps: true });
 
 const surveyResponseSchema = new mongoose.Schema({

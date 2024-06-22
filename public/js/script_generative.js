@@ -222,7 +222,7 @@ function displayTime() {
     document.getElementById('timer').textContent = `${langData.time} ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }
 
-window.onload = startTimer;
+window.addEventListener('load', startTimer);
 
 function handleKeyPress(event) {
     if (event.key === 'Enter') {
